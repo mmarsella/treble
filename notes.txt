@@ -77,3 +77,9 @@ Composition: {
 IDEAS FOR LATER:
 
 1) Give User the ability to config how long/short the tab lines can extend to.
+2)  Add Redux for state management.
+
+
+Optimize webpack ideas:  
+
+https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html
