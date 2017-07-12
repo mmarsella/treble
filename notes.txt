@@ -1,0 +1,79 @@
+Configured webpack and React using:  https://scotch.io/tutorials/setup-a-react-environment-using-webpack-and-babel
+
+
+MVP1:
+
+Build a page that represents traditional web-style guitar tabs:
+
+Example:  https://www.ultimate-guitar.com/lessons/for_beginners/how_to_read_tabs.html
+
+Goals:
+
+
+1)  Display 6 string grid.
+2)  Attach click events to each node of the grid, be able to click and enter a number.
+3)  Clicking a tab with a number allows the tab to be edited.
+4)  Have the ability to clear all tabs back to blank.
+6)  Only create a SINGLE TAB - (multiple tabs / collections of tabs will come later)
+
+
+
+Naming Conventions:
+
+														Page/Composition:  A collection of tabs.
+
+
+														Tab:
+																		e|------------------------|
+																		B|------------------------|
+																		G|------------------------|
+																		D|------------------------|
+																		A|------------------------|
+																		E|------------------------|
+
+
+														'-'  -->  Node.  A singular dash within a string.
+														'e|------------------------|' --> String.  6 in total per tab.
+
+
+Tab Schema:
+
+// an object with id, other metadata and array of tabs
+Composition: {
+	id: int,
+	name: 'Example Song',
+	date_created: Date,
+	date_updated: Date,
+	data:[
+		// each tab is an object with an id and an array of g-strings.
+		tab:{
+			
+			id: int,
+			data: [
+				// each g-string is an object of ordered nodes, starting at 1 (guitar string 1).
+				S1:{
+					1:'-',
+					2:'-',
+					3:'-'
+				},			
+				S2:{
+					1:'-',
+					2:'-',
+					3:'-'
+				}
+			]
+
+		},
+		tab:{},
+		tab:{}
+	]
+}
+
+
+
+
+
+
+IDEAS FOR LATER:
+
+1) Give User the ability to config how long/short the tab lines can extend to.
