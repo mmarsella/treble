@@ -11,7 +11,9 @@ class Node extends React.Component{
 			if(this.props.isInput){
 				return(
 					<div className='node' onClick={this.props.handleClick}>
-					<input className="tabInput"/>
+					<form onSubmit={this.props.handleSubmit} className="nodeForm">
+						<input name={"tab-" + this.props.idx} className="tabInput"/>
+					</form>
 				</div>
 				)
 			}
