@@ -3,3 +3,14 @@ $primaryColor: #eeffcc;
 body {
     background: $primaryColor;
 }
+
+.node{
+	font-size: 150px;
+  display: inline-block;
+}
+
+.tabInput{
+	width: 40px;
+	margin: 2px;
+	text-align: center;
+}
