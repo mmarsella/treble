@@ -48,37 +48,37 @@ class Gstring extends React.Component{
 		// console.log('clicked tab', e);
 
 		let nodes = this.state.nodes;
-		// debugger
 
+		// Make sure no other node inputs are open.
+		for(let i=0; i < nodes.length; i++){
+			if(nodes[i].isInput){
+				console.log('CLOSING: ', i);
+				nodes[i].isInput = false;
+			}
+		}
+
+		// Open the clicked node's input
 		nodes[idx].isInput = true;
 
+		//update state to reflect changes
 		this.setState({
 			nodes: nodes
 		})
 
-		// set state here, toggle this tab to be an input
 	}
 
 	handleSubmit(e){
 		e.preventDefault();
 		console.log('clicked tab', e.target);
-		// console.log('SUBMITTED', e)
-		// debugger
 
 		let nodes = this.state.nodes;
 		let idx = e.target.firstElementChild.name.split('-')[1];
 		
 		nodes[idx].isInput = false;
 
-
 		this.setState({
 			nodes:nodes
 		});
-
-		// maybe we should have state in the Node as well?
-		// not sure hot to toggle active/input mode 
-
-
 
 	}
 
