@@ -9,18 +9,20 @@ class Gstring extends React.Component{
 
 		// May want to set this stuff in state
 		// We would want to toggle the nodeCount on the fly too.
-		let nodes = [];
 
 		// Thinking in here we would populate the props with DB data here.  If a new TAB / set all as default (like below):
-		for(let i=0; i < this.nodeCount; i++){
+		let nodes = [
+			{val: '', isInput: false},
+			{val: '', isInput: false},
+			{val: '', isInput: false},
+			{val: '', isInput: false},
+			{val: '', isInput: false},
+			{val: '', isInput: false},
+			{val: '', isInput: false},
+			{val: '', isInput: false},
+			{val: '', isInput: true}
+		];
 
-			let isInput = false;
-			if(i === 8){
-				isInput = true;
-			}
-
-			nodes.push({node:<Node key={i} handleClick={this.handleClick.bind(this,i)} handleSubmit={this.handleSubmit.bind(this)} val='-' isInput={isInput} idx={i}></Node>}, active:false)
-		}
 
 		this.state = {
 			nodes: nodes
@@ -28,8 +30,31 @@ class Gstring extends React.Component{
 	}
 
 
-	handleClick(e, key){
-		console.log('clicked tab', e);
+	handleChange(e){
+		console.log('e.target:', e.target);
+
+		let nodes = this.state.nodes;
+		let idx = e.target.name.split('-')[1];
+		nodes[idx].val = e.target.value; 
+
+		this.setState({
+			nodes:nodes
+		});
+
+	}
+
+
+	handleClick(idx){
+		// console.log('clicked tab', e);
+
+		let nodes = this.state.nodes;
+		// debugger
+
+		nodes[idx].isInput = true;
+
+		this.setState({
+			nodes: nodes
+		})
 
 		// set state here, toggle this tab to be an input
 	}
@@ -37,13 +62,18 @@ class Gstring extends React.Component{
 	handleSubmit(e){
 		e.preventDefault();
 		console.log('clicked tab', e.target);
-		console.log('SUBMITTED', e)
+		// console.log('SUBMITTED', e)
 		// debugger
 
 		let nodes = this.state.nodes;
+		let idx = e.target.firstElementChild.name.split('-')[1];
+		
+		nodes[idx].isInput = false;
 
-		// could be a better way of naming nodes / targeting this
-		let tabNumber = parseInt(e.target.children[0].name.split('-')[1]);
+
+		this.setState({
+			nodes:nodes
+		});
 
 		// maybe we should have state in the Node as well?
 		// not sure hot to toggle active/input mode 
@@ -57,7 +87,15 @@ class Gstring extends React.Component{
 		console.log(this)
 
 		let nodes = this.state.nodes.map((el,i)=>{
-			return el.node;
+			return <Node 
+								key={i} 
+								handleClick={this.handleClick.bind(this, i)} 
+								handleSubmit={this.handleSubmit.bind(this)} 
+								handleChange={this.handleChange.bind(this)} 
+								val={el.val} 
+								isInput={el.isInput} 
+								idx={i}>
+						</Node>
 		})
 
 		return(
