@@ -83,3 +83,17 @@ IDEAS FOR LATER:
 Optimize webpack ideas:  
 
 https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html
+
+
+7/18/2017 TODO:
+
+1)  Should be able to close input nodes on click outside of element.
+2)  Create a Tab component that contains 6 gString components.
+3) 	Clear all tabs back to blank
+4)  Setup an Express server
+5)  Setup a mongoDB - try to persist a created tab.
+6)  Be able to load a tab.
+7)  Style the tab module
+8)  Could create a navbar
+9)  Research Redux - do we need to use it??? 
+10) Figure out React architecture - when do we NOT need to use it?  (ie - navbars, stuff like that)

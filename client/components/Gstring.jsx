@@ -23,6 +23,8 @@ class Gstring extends React.Component{
 			{val: '', isInput: true}
 		];
 
+		this.handleKeyDown = this.handleKeyDown.bind(this);
+
 
 		this.state = {
 			nodes: nodes
@@ -72,7 +74,15 @@ class Gstring extends React.Component{
 		console.log('clicked tab', e.target);
 
 		let nodes = this.state.nodes;
-		let idx = e.target.firstElementChild.name.split('-')[1];
+
+		let idx;
+		// debugger
+		// stupid workaround --> needs better implementation
+		if(e.target.firstElementChild){
+			idx = e.target.firstElementChild.name.split('-')[1];
+		}else{
+			idx = e.target.name.split('-')[1];			
+		}
 		
 		nodes[idx].isInput = false;
 
@@ -80,6 +90,14 @@ class Gstring extends React.Component{
 			nodes:nodes
 		});
 
+	}
+
+	handleKeyDown(e){
+		console.log('keydown', e);
+		if(e.keyCode === 27){
+			console.log('e--------->', e.target)
+			this.handleSubmit(e);
+		}
 	}
 
 
@@ -91,7 +109,8 @@ class Gstring extends React.Component{
 								key={i} 
 								handleClick={this.handleClick.bind(this, i)} 
 								handleSubmit={this.handleSubmit.bind(this)} 
-								handleChange={this.handleChange.bind(this)} 
+								handleChange={this.handleChange.bind(this)}
+								onKeyDown={this.handleKeyDown} 
 								val={el.val} 
 								isInput={el.isInput} 
 								idx={i}>

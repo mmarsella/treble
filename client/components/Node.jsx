@@ -17,6 +17,7 @@ class Node extends React.Component{
 							className="tabInput"
 							onChange={this.props.handleChange}
 							value={this.props.val}
+							onKeyDown={this.props.onKeyDown}
 						/>
 					</form>
 				</div>
