@@ -3,9 +3,11 @@ import Node from './Node.jsx';
 	
 class Gstring extends React.Component{
 
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.nodeCount = 10;
+
+		console.log('THIS PROPS IN STRING-->', this.props)
 
 		// May want to set this stuff in state
 		// We would want to toggle the nodeCount on the fly too.
@@ -20,7 +22,7 @@ class Gstring extends React.Component{
 			{val: '', isInput: false},
 			{val: '', isInput: false},
 			{val: '', isInput: false},
-			{val: '', isInput: true}
+			{val: '', isInput: false}
 		];
 
 		this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -47,17 +49,20 @@ class Gstring extends React.Component{
 
 
 	handleClick(idx){
-		// console.log('clicked tab', e);
+		console.log('this clicked', this)
+		console.log('clicked tab', idx);
 
 		let nodes = this.state.nodes;
 
+		console.log('NODES', this.state)
+
 		// Make sure no other node inputs are open.
-		for(let i=0; i < nodes.length; i++){
-			if(nodes[i].isInput){
-				console.log('CLOSING: ', i);
-				nodes[i].isInput = false;
-			}
-		}
+		// for(let i=0; i < nodes.length; i++){
+		// 	if(nodes[i].isInput){
+		// 		// console.log('CLOSING: ', i);
+		// 		nodes[i].isInput = false;
+		// 	}
+		// }
 
 		// Open the clicked node's input
 		nodes[idx].isInput = true;
@@ -71,7 +76,7 @@ class Gstring extends React.Component{
 
 	handleSubmit(e){
 		e.preventDefault();
-		console.log('clicked tab', e.target);
+		// console.log('clicked tab', e.target);
 
 		let nodes = this.state.nodes;
 
@@ -93,20 +98,21 @@ class Gstring extends React.Component{
 	}
 
 	handleKeyDown(e){
-		console.log('keydown', e);
+		// console.log('keydown', e);
 		if(e.keyCode === 27){
-			console.log('e--------->', e.target)
+			// console.log('e--------->', e.target)
 			this.handleSubmit(e);
 		}
 	}
 
 
 	render(){
-		console.log(this)
+		// console.log(this)
 
 		let nodes = this.state.nodes.map((el,i)=>{
 			return <Node 
 								key={i} 
+								stringNumber={this.props.stringNumber}
 								handleClick={this.handleClick.bind(this, i)} 
 								handleSubmit={this.handleSubmit.bind(this)} 
 								handleChange={this.handleChange.bind(this)}
@@ -118,7 +124,7 @@ class Gstring extends React.Component{
 		})
 
 		return(
-			<div>
+			<div className='gString'>
 				{nodes}
 			</div>
 		)

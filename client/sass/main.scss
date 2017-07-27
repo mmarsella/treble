@@ -9,8 +9,17 @@ body {
   display: inline-block;
 }
 
+.nodeForm{
+  position: relative;
+  bottom: 31px;
+}
+
 .tabInput{
 	width: 40px;
 	margin: 2px;
 	text-align: center;
+}
+
+.gString{
+  height: 37px;
 }

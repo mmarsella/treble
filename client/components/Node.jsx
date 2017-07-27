@@ -1,19 +1,15 @@
 import React from 'react';
 
-
 class Node extends React.Component{
-
-
-
 	render(){
 		
-			console.log("this.props", this.props)
+			// console.log("this.props", this.props)
 			if(this.props.isInput){
 				return(
 					<div className='node' onClick={this.props.handleClick}>
 					<form onSubmit={this.props.handleSubmit} className="nodeForm" name='nodeForm'>
 						<input 	
-							name={"s6-" + this.props.idx} 
+							name={this.props.stringNumber + '-' + this.props.idx} 
 							className="tabInput"
 							onChange={this.props.handleChange}
 							value={this.props.val}

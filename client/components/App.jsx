@@ -3,7 +3,7 @@
 */
 import React from 'react';
 import '../sass/main.scss';
-import Gstring from './Gstring.jsx'
+import Tab from './Tab.jsx'
 
 export default class App extends React.Component {
   render() {
@@ -11,8 +11,7 @@ export default class App extends React.Component {
      <div style={{textAlign: 'center'}}>
         <h1>TAB</h1>
 
-        <Gstring>
-        </Gstring>
+        <Tab></Tab>
       </div>);
   }
 }
