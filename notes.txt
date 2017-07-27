@@ -97,3 +97,7 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 8)  Could create a navbar
 9)  Research Redux - do we need to use it??? 
 10) Figure out React architecture - when do we NOT need to use it?  (ie - navbars, stuff like that)
+
+7/26/2017 TODO:
+
+1) Create a SUBMIT button that sends over TAB data of all strings.

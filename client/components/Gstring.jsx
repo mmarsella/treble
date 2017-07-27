@@ -78,6 +78,8 @@ class Gstring extends React.Component{
 		e.preventDefault();
 		// console.log('clicked tab', e.target);
 
+		console.log('this.props', this.props);
+
 		let nodes = this.state.nodes;
 
 		let idx;
@@ -94,6 +96,14 @@ class Gstring extends React.Component{
 		this.setState({
 			nodes:nodes
 		});
+
+		// Updates Tab component
+		// The goal is to store full tab data in the Tab component by passing each 
+		// gString's state up.
+
+		//TODO --> create a submit TAB button at the App component lvl to submit all collected 
+		// TAB data
+		this.props.updateTabState(e);
 
 	}
 
