@@ -16,6 +16,7 @@ class Tab extends Component{
     };
 
     console.log('tab:', tab)
+    console.log('tab:', tab)
 
     this.state = {
       tab: tab
