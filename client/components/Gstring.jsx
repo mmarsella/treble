@@ -12,7 +12,7 @@ class Gstring extends React.Component{
 			nodes: nodes
 		}
 
-		console.log('THIS PROPS IN STRING-->', this.props.nodes)
+		// console.log('THIS PROPS IN STRING-->', this.props.nodes)
 	}
 
 	componentWillMount(){
@@ -101,11 +101,7 @@ class Gstring extends React.Component{
 
 
 	render(){
-		// console.log(this)
-
 		let nodes = this.state.nodes.map((el,i)=>{
-			console.log('el', el);
-			console.log('i', i);
 			return <Node 
 								key={i} 
 								stringNumber={this.props.stringNumber}

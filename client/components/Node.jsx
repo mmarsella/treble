@@ -3,7 +3,7 @@ import React from 'react';
 class Node extends React.Component{
 	render(){
 		
-			console.log("this.props Node", this.props)
+			// console.log("this.props Node", this.props)
 			if(this.props.isInput){
 				return(
 					<div className='node' onClick={this.props.handleClick}>
