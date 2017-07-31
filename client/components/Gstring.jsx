@@ -5,34 +5,19 @@ class Gstring extends React.Component{
 
 	constructor(props){
 		super(props);
-		this.nodeCount = 10;
-
-		console.log('THIS PROPS IN STRING-->', this.props)
-
-		// May want to set this stuff in state
-		// We would want to toggle the nodeCount on the fly too.
-
-		// Thinking in here we would populate the props with DB data here.  If a new TAB / set all as default (like below):
-		let nodes = [
-			{val: '', isInput: false},
-			{val: '', isInput: false},
-			{val: '', isInput: false},
-			{val: '', isInput: false},
-			{val: '', isInput: false},
-			{val: '', isInput: false},
-			{val: '', isInput: false},
-			{val: '', isInput: false},
-			{val: '', isInput: false}
-		];
-
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 
-
+		let nodes = this.props.nodes;
 		this.state = {
 			nodes: nodes
 		}
+
+		console.log('THIS PROPS IN STRING-->', this.props.nodes)
 	}
 
+	componentWillMount(){
+	  console.log('***** gString IS MOUNTING *******')
+	}
 
 	handleChange(e){
 		console.log('e.target:', e.target);
@@ -47,14 +32,13 @@ class Gstring extends React.Component{
 
 	}
 
-
 	handleClick(idx){
 		// console.log('this clicked', this)
 		console.log('clicked tab', idx);
 
 		let nodes = this.state.nodes;
 
-		// console.log('NODES', this.state)
+		console.log('NODES', this.state.nodes)
 
 		// Make sure no other node inputs are open.
 		for(let i=0; i < nodes.length; i++){
@@ -120,6 +104,8 @@ class Gstring extends React.Component{
 		// console.log(this)
 
 		let nodes = this.state.nodes.map((el,i)=>{
+			console.log('el', el);
+			console.log('i', i);
 			return <Node 
 								key={i} 
 								stringNumber={this.props.stringNumber}
