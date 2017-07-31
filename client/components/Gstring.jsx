@@ -49,20 +49,20 @@ class Gstring extends React.Component{
 
 
 	handleClick(idx){
-		console.log('this clicked', this)
+		// console.log('this clicked', this)
 		console.log('clicked tab', idx);
 
 		let nodes = this.state.nodes;
 
-		console.log('NODES', this.state)
+		// console.log('NODES', this.state)
 
 		// Make sure no other node inputs are open.
-		// for(let i=0; i < nodes.length; i++){
-		// 	if(nodes[i].isInput){
-		// 		// console.log('CLOSING: ', i);
-		// 		nodes[i].isInput = false;
-		// 	}
-		// }
+		for(let i=0; i < nodes.length; i++){
+			if(nodes[i].isInput){
+				// console.log('CLOSING: ', i);
+				nodes[i].isInput = false;
+			}
+		}
 
 		// Open the clicked node's input
 		nodes[idx].isInput = true;
@@ -78,7 +78,7 @@ class Gstring extends React.Component{
 		e.preventDefault();
 		// console.log('clicked tab', e.target);
 
-		console.log('this.props', this.props);
+		// console.log('this.props', this.props);
 
 		let nodes = this.state.nodes;
 
@@ -103,7 +103,7 @@ class Gstring extends React.Component{
 
 		//TODO --> create a submit TAB button at the App component lvl to submit all collected 
 		// TAB data
-		this.props.updateTabState(e);
+		this.props.updateTabState(nodes, e.target.firstElementChild.name.split('-')[0], e);
 
 	}
 
