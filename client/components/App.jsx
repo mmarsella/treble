@@ -3,7 +3,8 @@
 */
 import React from 'react';
 import '../sass/main.scss';
-import Tab from './Tab.jsx'
+import Tab from './Tab.jsx';
+
 
 export default class App extends React.Component {
   render() {
