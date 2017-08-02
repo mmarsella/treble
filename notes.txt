@@ -106,7 +106,11 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 7/30/2017 TODO:
 
 1)  Create a add more nodes button for a tab. Need to update the Tab component on add/subtract of all nodes per string.
-2)  Create a clear tab button - update Tab state on clear accordingly.
+2)  Create a clear tab button - update Tab state on clear accordingly. [DONE]
 3)  Fix Tab styling so all strings are bunched neatly together.
 4)  On click of a node - input should be focused (currently need to click on node, then click inside input)
+
+8/1/2017 TODO:
+
+1)  Figure out why we aren't getting access to refs after click event / element swaps.
 

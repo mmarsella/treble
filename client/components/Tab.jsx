@@ -103,8 +103,6 @@ class Tab extends Component{
       tab: newTab
     })
 
-
-
   }
 
   render(){
