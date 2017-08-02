@@ -8,7 +8,8 @@ class Tab extends Component{
     this.nodeCount = 10;  // set the amt of nodes (trailing -'s). Passes to gString
 
     this.updateTabState = this.updateTabState.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.saveTab = this.saveTab.bind(this);
+    this.clearTab = this.clearTab.bind(this);
 
     let tab = {};
 
@@ -70,12 +71,39 @@ class Tab extends Component{
     })
   }
 
-  handleSubmit(){
+  saveTab(){
     console.log('TAB SUBMITTING');
 
     // Temporary --> This is where we would ping the server with a tab save
     let tab = JSON.stringify(this.state.tab);
     localStorage.setItem('myTab', tab);
+
+  }
+
+  clearTab(){
+    console.log('TAB SUBMITTING');
+
+    let tab = this.state.tab;
+    let newTab = {};
+    let nodes = [];
+
+    console.log('tab before', this.state.tab)
+
+    for(let arr in tab){
+      for(let i=0; i < tab[arr].length; i++){
+        nodes.push({val: '', isInput: false});
+      }
+      newTab[arr] = nodes;
+      nodes = [];
+    }
+
+    console.log('newTab', newTab)
+
+    this.setState({
+      tab: newTab
+    })
+
+
 
   }
 
@@ -89,7 +117,8 @@ class Tab extends Component{
 
     return(
       <div>
-      <button onClick={this.handleSubmit}>SAVE TAB</button>
+      <button onClick={this.saveTab}>SAVE TAB</button>
+      <button onClick={this.clearTab}>CLEAR TAB</button>
       {tab}
       </div>
     )

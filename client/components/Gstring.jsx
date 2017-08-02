@@ -15,6 +15,13 @@ class Gstring extends React.Component{
 		// console.log('THIS PROPS IN STRING-->', this.props.nodes)
 	}
 
+
+	// When state is updated in parent component (Tab), update state here (we init state through parent props here)
+	componentWillReceiveProps(nextProps) {
+		console.log('NEXT PROPS', nextProps)
+	  this.setState({ nodes: nextProps.nodes });  
+	}
+
 	componentWillMount(){
 	  console.log('***** gString IS MOUNTING *******')
 	}
