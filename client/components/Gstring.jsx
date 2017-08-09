@@ -1,5 +1,6 @@
 import React from 'react'
 import Node from './Node.jsx';
+import '../sass/Gstring.scss';
 	
 class Gstring extends React.Component{
 
