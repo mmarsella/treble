@@ -6,7 +6,7 @@ class Gstring extends React.Component{
 	constructor(props){
 		super(props);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
-		this.focus = this.focus.bind(this);
+		// this.focus = this.focus.bind(this);
 
 		let nodes = this.props.nodes;
 		this.state = {
@@ -27,10 +27,6 @@ class Gstring extends React.Component{
 	  console.log('***** gString IS MOUNTING *******')
 	}
 
-
-	focus(e){
-
-	}
 
 	handleChange(e){
 		console.log('e.target:', e.target);
@@ -63,12 +59,6 @@ class Gstring extends React.Component{
 
 		// Open the clicked node's input
 		nodes[idx].isInput = true;
-
-		debugger
-
-		//focus on the input
-		// debugger
-		// this.node.form.focus();
 
 		//update state to reflect changes
 		this.setState({
@@ -124,7 +114,7 @@ class Gstring extends React.Component{
 	render(){
 		let nodes = this.state.nodes.map((el,i)=>{
 			return <Node 
-								ref={(ch) => this.node = ch}
+								ref={(ch) => this.child = ch}
 								key={i} 
 								stringNumber={this.props.stringNumber}
 								handleClick={this.handleClick.bind(this, i)} 
