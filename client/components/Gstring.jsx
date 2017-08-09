@@ -64,7 +64,7 @@ class Gstring extends React.Component{
 		// Open the clicked node's input
 		nodes[idx].isInput = true;
 
-		// debugger
+		debugger
 
 		//focus on the input
 		// debugger
