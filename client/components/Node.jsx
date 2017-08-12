@@ -1,40 +1,45 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class Node extends React.Component{
 
-
-
-	// constructor(props){
-	// 	super(props);
-	// };
+	constructor(props){
+		super(props);
+	};
 
 	componentDidUpdate(){
 		console.log('focusing')
-		// this.refs.form.focus();
+		if(this.props.isInput){
+			this.myInput.focus();
+		}
 	}
 
 	render(){	
-		// debugger
 		// console.log("this.props Node", this.props)
 			if(this.props.isInput){
+				console.log('I am the input', this.props.idx)
+				// debugger
 				return(
-					<div className='inputContainer'>
-						<form onSubmit={this.props.handleSubmit} className="nodeForm" name='nodeForm' >
-							<input 	
-								name={this.props.stringNumber + '-' + this.props.idx} 
-								className="tabInput"
-								onChange={this.props.handleChange}
-								value={this.props.val}
-								onKeyDown={this.props.onKeyDown}
-								ref={(form) => { this.form = form; }}
-							/>
-						</form>
-					</div>
+					<div className='node'>
+					<form onSubmit={this.props.handleSubmit} className="nodeForm" name='nodeForm'>
+						<input
+							ref={(ip)=> this.myInput= ip}
+							name={this.props.stringNumber + '-' + this.props.idx} 
+							className="tabInput"
+							onChange={this.props.handleChange}
+							value={this.props.val}
+							onKeyDown={this.props.onKeyDown}
+						/>
+					</form>
+				</div>
 				)
 			}
 		
 			return(
-				<div className='node' onClick={this.props.handleClick}>
+
+				<div className='node' onClick={this.props.handleClick}
+				ref={(ip)=> this.myNode= ip}
+				>
 					{this.props.val ? this.props.val: '-'}
 				</div>
 			)

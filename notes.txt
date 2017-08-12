@@ -108,9 +108,19 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 1)  Create a add more nodes button for a tab. Need to update the Tab component on add/subtract of all nodes per string.
 2)  Create a clear tab button - update Tab state on clear accordingly. [DONE]
 3)  Fix Tab styling so all strings are bunched neatly together.
-4)  On click of a node - input should be focused (currently need to click on node, then click inside input)
+4)  On click of a node - input should be focused (currently need to click on node, then click inside input) [DONE]
 
 8/1/2017 TODO:
 
-1)  Figure out why we aren't getting access to refs after click event / element swaps.
+1)  Figure out why we aren't getting access to refs after click event / element swaps. [DONE]
+
+8/8/2017 TODO:
+
+1)  Clicking outside a form closes the form.
+2)  Create Composition Class - should contain many tabs. 
+3)  Should be able to scroll through multiple tabs of a composition.  (Need to figure out a solid design for this).
+4)  Replace local storage get/set with pings to our server.  
+5)  Start building out schema for storing compositions.  
+6)  Design a simple user login for User.  That way we can assign compositions to a single User. 
+7)  Add navbar
 
