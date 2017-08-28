@@ -126,5 +126,14 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 
 
 8/27/17
-1)  Remove saveTab from tab.  We only need to save Compositions
+1)  Remove saveTab from tab.  We only need to save Compositions;
+
+
+2)  Add User backend support.  
+|___ Add API call from client to log in / sign up user
+
+
+3)  On Log in -->  List all compositions.  Add a User-Home screen that contains many compositions.
+|___ On click of a composition tile/etc.. should navigate to a composition view.
+
 

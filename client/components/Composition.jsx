@@ -8,6 +8,13 @@ class Composition extends React.Component{
 
   componentWillMount(){
     console.log('comp mounting')
+
+
+    // api/composition  (GET)  :id, compName
+    // 1)  Get Composition
+    // 2)  Break comp into tabs
+    // 3)  Store each tab into Tab classe's props
+
     // Thinking in here we would populate the props with DB data here.  
     // If a new TAB / set all as default (like below):
     var tab;
@@ -39,6 +46,8 @@ class Composition extends React.Component{
   render(){
 
     let tabs = [];
+
+    // the amt of tabs in a compisition (from the db)
     for(let i=0; i < 4; i++){
       tabs.push(<Tab key={i} data={this.state.tab}></Tab>)
     }
