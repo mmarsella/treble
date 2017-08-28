@@ -5,8 +5,15 @@ body {
 }
 
 .node{
-	font-size: 150px;
+	// font-size: 150px;
   display: inline-block;
+  height: 30px;
+  width: 40px;
+}
+
+.node > img{
+  height: 20px;
+  margin: 5px 10px;
 }
 
 .inputContainer{
@@ -15,12 +22,12 @@ body {
 }
 
 .nodeForm{
-  position: relative;
-  bottom: 31px;
+  position: absolute;
+  // bottom: 31px;
 }
 
 .tabInput{
-	width: 40px;
+	width: 30px;
 	margin: 2px;
 	text-align: center;
 }
