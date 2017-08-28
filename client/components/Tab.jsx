@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import Gstring from './Gstring.jsx';
 
 class Tab extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.stringNumber = 6;  // To be able to handle other stringed instruments in the future (bass/etc..)
     this.nodeCount = 10;  // set the amt of nodes (trailing -'s). Passes to gString
 
@@ -26,6 +26,7 @@ class Tab extends Component{
   }
 
   componentWillMount(){
+    console.log('TAB mounting')
     // Thinking in here we would populate the props with DB data here.  
     // If a new TAB / set all as default (like below):
 
@@ -115,7 +116,7 @@ class Tab extends Component{
 
 
     return(
-      <div>
+      <div className="tab">
       <button onClick={this.saveTab}>SAVE TAB</button>
       <button onClick={this.clearTab}>CLEAR TAB</button>
       {tab}

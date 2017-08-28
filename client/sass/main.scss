@@ -5,12 +5,12 @@ body {
 }
 
 .node{
-	font-size: 150px;
+	font-size: 50px;
   display: inline-block;
 }
 
 .inputContainer{
-	font-size: 150px;
+	font-size: 50px;
   display: inline-block;
 }
 
@@ -48,4 +48,13 @@ body {
   width: 50px;
   float: left;
   display: inline-block;
+}
+
+
+/******** TAB **********/
+
+.tab{
+  display: inline-block;
+  border-right: solid 1px black;
+  margin: 1px;
 }

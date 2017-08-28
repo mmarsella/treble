@@ -1,6 +1,7 @@
 import React from 'react';
 import '../sass/main.scss';
-import Tab from './Tab.jsx';
+// import Tab from './Tab.jsx';
+import Composition from './Composition.jsx';
 import Navbar from './navbar/navbar.jsx';
 
 
@@ -21,8 +22,8 @@ export default class App extends React.Component {
     return (
      <div style={{textAlign: 'center'}}>
       <Navbar></Navbar>
-        <h1>TAB</h1>
-        <Tab></Tab>
+        <h1>Composition</h1>
+        <Composition></Composition>
       </div>
     )
   }
