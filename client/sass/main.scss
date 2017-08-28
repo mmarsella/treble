@@ -6,9 +6,12 @@ body {
 
 .node{
 	// font-size: 150px;
+  position: relative;
   display: inline-block;
   height: 30px;
   width: 40px;
+  line-height: 30px;
+
 }
 
 .node > img{
@@ -30,6 +33,11 @@ body {
 	width: 30px;
 	margin: 2px;
 	text-align: center;
+}
+
+.gString{
+  display: flex;
+  justify-content: center;
 }
 
 
