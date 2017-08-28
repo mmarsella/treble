@@ -20,8 +20,11 @@ class Tab extends Component{
     console.log('tab:', tab)
     console.log('tab:', tab)
 
+    console.log("TAB PROPS", this.props)
+
+    // Each Tab is populated from props passed down from Composition
     this.state = {
-      tab: tab
+      tab: this.props.data
     }
   }
 
@@ -31,28 +34,28 @@ class Tab extends Component{
     // If a new TAB / set all as default (like below):
 
     /* Init nodes for each string */
-    var tab;
+    // var tab;
 
-    if(localStorage['myTab']){
-      // If stored in DB
-      tab = JSON.parse(localStorage.myTab);
-    }else{
-      /***** New Tab Flow *****/
-      let nodes = [];
-      tab = this.state.tab;
-      console.log('tabs before', tab);
-      for(let s=0; s < this.stringNumber; s++){
-        for(let i=0; i < this.nodeCount; i++){
-          nodes.push({val: '', isInput: false});
-        }
-        tab[s+1] = nodes;
-        nodes = [];
-      }
-    }
+    // if(localStorage['myTab']){
+    //   // If stored in DB
+    //   tab = JSON.parse(localStorage.myTab);
+    // }else{
+    //   /***** New Tab Flow *****/
+    //   let nodes = [];
+    //   tab = this.state.tab;
+    //   console.log('tabs before', tab);
+    //   for(let s=0; s < this.stringNumber; s++){
+    //     for(let i=0; i < this.nodeCount; i++){
+    //       nodes.push({val: '', isInput: false});
+    //     }
+    //     tab[s+1] = nodes;
+    //     nodes = [];
+    //   }
+    // }
 
-    this.setState({
-      tab: tab
-    })
+    // this.setState({
+    //   tab: tab
+    // })
 
     console.log('***** TAB IS MOUNTING *******', this.state)
   }

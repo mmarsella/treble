@@ -124,3 +124,7 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 6)  Design a simple user login for User.  That way we can assign compositions to a single User. 
 7)  Add navbar
 
+
+8/27/17
+1)  Remove saveTab from tab.  We only need to save Compositions
+

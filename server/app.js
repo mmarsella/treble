@@ -20,17 +20,19 @@ app.use(function(req, res, next) {
  	next();
 });
 
-router.get('/', function(req, res) {
+app.get('/', function(req, res) {
 	res.json({ message: 'API Initialized!'});
 });
 
 app.use('/api', router);
 
+
+console.log('PROCESS.ENV-------->', process.env)
 var mongoURI = process.env.MONGO_URI;
 // console.log(mongoURI)
 mongoose.connect(mongoURI, { useMongoClient: true });
 var db = mongoose.connection;
-console.log(db)
+// console.log(db)
 // db.openUri(mongoDB, { useMongoClient: true });
 // MongoClient.connect(mongoURI, function(err, db){
 // 	if(err){
