@@ -24,3 +24,28 @@ body {
 	margin: 2px;
 	text-align: center;
 }
+
+
+/************/
+
+.navbar{
+  height: 30px;
+  border-bottom: solid 1px black;
+}
+
+.loginForm{
+  width: 333px;
+  float: right;
+  text-align: right;
+  margin-top: 4px;
+}
+
+.usernameInput{
+  margin-right: 10px;
+}
+
+.logo{
+  width: 50px;
+  float: left;
+  display: inline-block;
+}

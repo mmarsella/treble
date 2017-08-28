@@ -4,7 +4,6 @@ var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 var MongoClient = require('mongodb').MongoClient;
 
-
 var app = express();
 var router = express.Router();
 
