@@ -126,7 +126,7 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 
 
 8/27/17
-1)  Remove saveTab from tab.  We only need to save Compositions;
+1)  Remove saveTab from tab.  We only need to save Compositions;  [DONE]
 
 
 2)  Add User backend support.  

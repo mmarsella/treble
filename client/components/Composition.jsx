@@ -12,8 +12,12 @@ class Composition extends React.Component{
 
     // api/composition  (GET)  :id, compName
     // 1)  Get Composition
+    this.getComposition(1) // TODO: Should pass a comp ID from this.props. Put in temp comp id for now 
+
     // 2)  Break comp into tabs
     // 3)  Store each tab into Tab classe's props
+
+
 
     // Thinking in here we would populate the props with DB data here.  
     // If a new TAB / set all as default (like below):
@@ -40,6 +44,21 @@ class Composition extends React.Component{
       tab: tab
     })
 
+  }
+
+  // Makes an API call to grab composition
+  getComposition(compID){ 
+
+    // Needs a uid and composition id
+
+    fetch(`http://localhost:3001/composition?id=${compID}&uid=mark`) // Call the fetch function passing the url of the API as a parameter
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log('DATA NOW', data)
+    })
+    .catch(function(err) {
+        console.log('ERRROR', err)
+    });
   }
 
 

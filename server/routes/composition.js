@@ -5,8 +5,9 @@ var router        = express.Router();
 
 // Grab a composition
 router.get('/', (req,res) => {
-  console.log('GOT COMP!');
-  res.send('GOT COMP!');
+  console.log('req.params---->', req.params);
+  console.log('req.query---->', req.query);
+  return res.send({status:true, data:'mark'});
 })
 
 

@@ -8,6 +8,14 @@ var port          = process.env.API_PORT || 3001;
 var mongoURI      = process.env.MONGO_URI;
 var db            = mongoose.connection;
 var api           = require('./routes/api.js'); // obj of api funcs
+const corser      = require('corser');
+
+
+
+// responds and ends OPTIONS requests. also CORS headers.
+app.use(corser.create({
+  // requestHeaders: corser.simpleRequestHeaders.concat(["X-Session"])
+}));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

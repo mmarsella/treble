@@ -8,8 +8,8 @@ class Tab extends Component{
     this.nodeCount = 10;  // set the amt of nodes (trailing -'s). Passes to gString
 
     this.updateTabState = this.updateTabState.bind(this);
-    this.saveTab = this.saveTab.bind(this);
     this.clearTab = this.clearTab.bind(this);
+    // this.saveTab = this.saveTab.bind(this);
 
     let tab = {};
 
@@ -28,8 +28,8 @@ class Tab extends Component{
     }
   }
 
-  componentWillMount(){
-    console.log('TAB mounting')
+  // componentWillMount(){
+  //   console.log('TAB mounting')
     // Thinking in here we would populate the props with DB data here.  
     // If a new TAB / set all as default (like below):
 
@@ -57,8 +57,8 @@ class Tab extends Component{
     //   tab: tab
     // })
 
-    console.log('***** TAB IS MOUNTING *******', this.state)
-  }
+  //   console.log('***** TAB IS MOUNTING *******', this.state)
+  // }
 
   // This keep tracks of all gStrings.
   updateTabState(gString, stringNum, e){
@@ -76,14 +76,14 @@ class Tab extends Component{
     })
   }
 
-  saveTab(){
-    console.log('TAB SUBMITTING');
+  // saveTab(){
+  //   console.log('TAB SUBMITTING');
 
-    // Temporary --> This is where we would ping the server with a tab save
-    let tab = JSON.stringify(this.state.tab);
-    localStorage.setItem('myTab', tab);
+  //   // Temporary --> This is where we would ping the server with a tab save
+  //   let tab = JSON.stringify(this.state.tab);
+  //   localStorage.setItem('myTab', tab);
 
-  }
+  // }
 
   clearTab(){
     console.log('TAB SUBMITTING');
@@ -120,7 +120,6 @@ class Tab extends Component{
 
     return(
       <div className="tab">
-      <button onClick={this.saveTab}>SAVE TAB</button>
       <button onClick={this.clearTab}>CLEAR TAB</button>
       {tab}
       </div>
