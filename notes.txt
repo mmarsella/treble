@@ -137,3 +137,12 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 |___ On click of a composition tile/etc.. should navigate to a composition view.
 
 
+9/5/2017
+
+1)  Finish Login -->  Should be able to submit form --> ping DB --> logs in User --> returns User Obj --> form clears
+2)  Add Composition List
+|___ Clicking a compisition in the composition list takes User to Composition page
+3)  Save Composition
+4)  GET composition
+
+
