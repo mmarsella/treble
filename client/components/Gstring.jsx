@@ -20,7 +20,7 @@ class Gstring extends React.Component{
 
 	// When state is updated in parent component (Tab), update state here (we init state through parent props here)
 	componentWillReceiveProps(nextProps) {
-		console.log('NEXT PROPS', nextProps)
+		console.log('NEXT PROPSssssdddd', nextProps)
 	  this.setState({ nodes: nextProps.nodes });  
 	}
 
