@@ -25,7 +25,7 @@ export default class Navbar extends React.Component {
       <nav className="navbar">
         <div className="logo"> Treble </div>
         <Login
-          onChange={this.handleChange}
+          handleChange={this.handleChange}
 
         ></Login>
       </nav>
