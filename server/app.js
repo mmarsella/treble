@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
 
 app.use('/composition', api.composition);
 
-// console.log(mongoURI)
+console.log('process --------->', process.env)
 mongoose.connect(mongoURI, { useMongoClient: true });
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
