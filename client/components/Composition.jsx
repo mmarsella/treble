@@ -12,7 +12,7 @@ class Composition extends React.Component{
 
     // api/composition  (GET)  :id, compName
     // 1)  Get Composition
-    this.getComposition(1) // TODO: Should pass a comp ID from this.props. Put in temp comp id for now 
+    // this.getComposition(1) // TODO: Should pass a comp ID from this.props. Put in temp comp id for now 
 
     // 2)  Break comp into tabs
     // 3)  Store each tab into Tab classe's props
@@ -22,7 +22,7 @@ class Composition extends React.Component{
     // Thinking in here we would populate the props with DB data here.  
     // If a new TAB / set all as default (like below):
     var tab;
-
+    // debugger
     if(localStorage['myTab']){
       // If stored in DB
       tab = JSON.parse(localStorage.myTab);

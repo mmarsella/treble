@@ -139,10 +139,27 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 
 9/5/2017
 
-1)  Finish Login -->  Should be able to submit form --> ping DB --> logs in User --> returns User Obj --> form clears
+1)  Finish Login -->  Should be able to submit form --> ping DB --> logs in User --> returns User Obj --> form clears [MARK]
 2)  Add Composition List
 |___ Clicking a compisition in the composition list takes User to Composition page
 3)  Save Composition
 4)  GET composition
 
+
+9/10/2017
+
+1)  Finish writing getOne and getAll for composition route.  
+2)  Finish Login -->  Should be able to submit form --> ping DB --> logs in User 				--> returns User Obj --> form clears [MARK]
+3)  Handle transition from view1 --> view2 --> view3
+		(expect on login to return {uid and username}) [SAM]
+
+
+-------- WHAT OUR VIEWS LOOK LIKE (only 3) ---------
+
+
+1)  Intro screen :  Nothing for now - maybe a login and a demo of the app with 					flashy pics and a blurb.
+
+2)  After signing in:  List of compositions (eventually more data about the user)
+
+3)  Single composition view (this is where we can edit a pre-existing comp OR start 		a new one)
 

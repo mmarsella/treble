@@ -1,16 +1,11 @@
 require('dotenv').config();
 var express       = require("express");
-var mongoose      = require("mongoose");
 var bodyParser    = require("body-parser");
 var MongoClient   = require('mongodb').MongoClient;
 var app           = express();
 var port          = process.env.API_PORT || 3001;
-var mongoURI      = process.env.MONGO_URI;
-var db            = mongoose.connection;
 var api           = require('./routes/api.js'); // obj of api funcs
 const corser      = require('corser');
-
-
 
 // responds and ends OPTIONS requests. also CORS headers.
 app.use(corser.create({
@@ -30,16 +25,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/', function(req, res) {
-  res.json({ message: 'API Initialized!'});
-});
+// app.get('/', function(req, res) {
+//   res.json({ message: 'API Initialized!'});
+// });
 
 app.use('/composition', api.composition);
-
-console.log('process --------->', process.env)
-mongoose.connect(mongoURI, { useMongoClient: true });
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+app.use('/user', api.user);
 
 app.listen(port, function(){
   console.log(`Server is listening on port ${port}`);
