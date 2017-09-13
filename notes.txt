@@ -163,3 +163,12 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 
 3)  Single composition view (this is where we can edit a pre-existing comp OR start 		a new one)
 
+
+
+9/12/2017
+
+1)  Serve the client from the express server (https://stormpath.com/blog/build-a-react-app-with-user-authentication).
+
+
+
+
