@@ -5,7 +5,8 @@
   "author": "Mark Marsella <mark@givingassistant.org>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "server": "nodemon server/app.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -30,6 +31,7 @@
     "babel-preset-react": "^6.24.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "node-sass": "^4.5.3",
+    "nodemon": "^1.12.0",
     "sass-loader": "^6.0.6"
   }
 }
