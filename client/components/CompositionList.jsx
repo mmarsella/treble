@@ -4,14 +4,23 @@ import Tab from './Tab.jsx';
 class CompositionList extends React.Component{
 	constructor(props){
 		super(props)
+		console.log('props', this.props)
 	}
 
 	componentWillMount(){
-		console.log('compositionlist mounting********')
-		var user;
-
-		if(localStorage['trebleUser']){
-			user = JSON.parse(localStorage.myTab)
-		}
+		
 	}
-}
+
+
+	render(){
+
+	    return(
+	      <div>
+	        <h1>HELLO from composition list</h1>
+	        <div onClick={e => this.props.changeView(e, 'intro')}>back</div>
+	      </div>
+	    )
+	  }
+	}
+
+	export default CompositionList;
