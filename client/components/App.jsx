@@ -11,10 +11,11 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.changeView = this.changeView.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
       user: false,
-      active: 'clist'
+      active: 'intro'
     }
 
   }
@@ -39,8 +40,10 @@ export default class App extends React.Component {
   // Should return a User object
 
   // {email,uid}
-  handleSubmit(e){
-
+  handleSubmit(e, param){
+    console.log('HANDLE SUBMIT in APP',e,param)
+    e.preventDefault();
+    this.login(param);
 
   }
 
@@ -50,7 +53,17 @@ export default class App extends React.Component {
   }
 
   // Only supporting login right now
-  login(e){
+  login(userForm){
+    console.log('LOGGING IN!', userForm)
+    fetch(`http://localhost:3001/user/login?username=${userForm.username}&password=${userForm.password}`) 
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log('DATA NOW', data)
+      this.changeView(null, 'clist');
+    })
+    .catch(function(err) {
+        console.log('ERRROR', err)
+    });
 
   }
 
@@ -84,7 +97,7 @@ export default class App extends React.Component {
     // let active = 'clist';
     return (
      <div style={{textAlign: 'center'}}>
-      <Navbar></Navbar>
+      <Navbar handleSubmit={this.handleSubmit}></Navbar>
         <h1>Composition</h1>
         {
           active === 'intro' ? (<Intro></Intro>) : 

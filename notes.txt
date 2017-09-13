@@ -167,7 +167,19 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 
 9/12/2017
 
-1)  Serve the client from the express server (https://stormpath.com/blog/build-a-react-app-with-user-authentication).
+**Idea**  Serve the client from the express server (https://stormpath.com/blog/build-a-react-app-with-user-authentication).
+
+
+1)  Swap out login form on succesful login to username and a logout button.
+2)  Set cookie for user login - persist session.
+3)  Add logout - when logged out - stay on login screen.
+4)  Back-End:  Support getAllUserComps and getSingleComp.
+5)  Back-End:  Support saving comp.  (should be linked with uid).
+6)  Front-End & Back-End:  Support starting new comp.
+7)  Front-End & Back-End:  For login - need to return & render error if 						incorrect creds
+8)  If time - start styling.
+
+
 
 
 

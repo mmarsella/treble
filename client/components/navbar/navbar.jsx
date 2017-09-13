@@ -6,8 +6,8 @@ export default class Navbar extends React.Component {
   constructor(props){
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.login = this.login.bind(this);
+    // this.props.handleSubmit = this.props.handleSubmit.bind(this);
+    // this.login = this.login.bind(this);
     this.signUp = this.signUp.bind(this);
 
     this.state = {
@@ -37,27 +37,19 @@ export default class Navbar extends React.Component {
 
   }
 
-  handleSubmit(e){
-    console.log('HANDLE SUBMIT')
-    e.preventDefault();
-    this.login();
-  }
+  // handleSubmit(e){
+  //   console.log('HANDLE SUBMIT')
+  //   e.preventDefault();
+  //   this.props.login(this.userForm);
+  // }
 
   signUp(e){
     console.log('signed up!', e)
   }
 
-  login(){
-    console.log('LOGGING IN!', this.userForm)
-    fetch(`http://localhost:3001/user/login?username=${this.userForm.username}&password=${this.userForm.password}`) 
-    .then((resp) => resp.json())
-    .then((data) => {
-      console.log('DATA NOW', data)
-    })
-    .catch(function(err) {
-        console.log('ERRROR', err)
-    });
-  }
+  // login(){
+
+  // }
 
   render() {
     return (
@@ -65,7 +57,8 @@ export default class Navbar extends React.Component {
         <div className="logo"> Treble </div>
         <Login
           handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit} 
+          handleSubmit={this.props.handleSubmit} 
+          handleSubmit={e => this.props.handleSubmit(e, this.userForm)} 
         ></Login>
       </nav>
     )
