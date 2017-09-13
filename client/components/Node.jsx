@@ -35,7 +35,6 @@ class Node extends React.Component{
 			}
 		
 			return(
-
 				<div className='node' onClick={this.props.handleClick} ref={(ip)=> this.myNode= ip}>
 					{this.props.val ? this.props.val: <img src='../assets/dash.png' />}
 				</div>
