@@ -14,7 +14,7 @@ class Gstring extends React.Component{
 			nodes: nodes
 		}
 
-		// console.log('THIS PROPS IN STRING-->', this.props.nodes)
+		console.log('THIS PROPS IN STRING-->', this.props.nodes)
 	}
 
 
@@ -70,8 +70,8 @@ class Gstring extends React.Component{
 	}
 
 	handleSubmit(e){
+		console.log('handleSUBMITSTSTSTS', e.target);
 		e.preventDefault();
-		// console.log('clicked tab', e.target);
 
 		// console.log('this.props', this.props);
 
@@ -104,7 +104,7 @@ class Gstring extends React.Component{
 	}
 
 	handleKeyDown(e){
-		// console.log('keydown', e);
+		console.log('keydown', e);
 		if(e.keyCode === 27){
 			// console.log('e--------->', e.target)
 			this.handleSubmit(e);
