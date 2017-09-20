@@ -10,11 +10,11 @@ class Login extends React.Component{
     return(
       <form className="loginForm" name='loginForm'>
         <input
-          ref={(ip)=> this.username= ip}
+          ref={(ip)=> this.email= ip}
           className="usernameInput"
-          placeholder="username..."
+          placeholder="email..."
           onChange={this.props.handleChange}
-          name='username' 
+          name='email' 
         />
         <input
           ref={(ip)=> this.password= ip}

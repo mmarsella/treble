@@ -151,7 +151,7 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 1)  Finish writing getOne and getAll for composition route.  
 2)  Finish Login -->  Should be able to submit form --> ping DB --> logs in User 				--> returns User Obj --> form clears [MARK]
 3)  Handle transition from view1 --> view2 --> view3
-		(expect on login to return {uid and username}) [SAM]
+		(expect on login to return {uid and username}) [SAM] - [DONE]
 
 
 -------- WHAT OUR VIEWS LOOK LIKE (only 3) ---------
@@ -170,7 +170,7 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 **Idea**  Serve the client from the express server (https://stormpath.com/blog/build-a-react-app-with-user-authentication).
 
 
-1)  Swap out login form on succesful login to username and a logout button.
+1)  Swap out login form on succesful login to username and a logout button. {IN PROGRESS}
 2)  Set cookie for user login - persist session.
 3)  Add logout - when logged out - stay on login screen.
 4)  Back-End:  Support getAllUserComps and getSingleComp.
@@ -178,6 +178,40 @@ https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-
 6)  Front-End & Back-End:  Support starting new comp.
 7)  Front-End & Back-End:  For login - need to return & render error if 						incorrect creds
 8)  If time - start styling.
+
+
+9/19/2017
+
+Work done:
+
+Front-end
+- On login, setState to user. On succesful setState, change view to compositionList. Pass the user obj down as props.
+- Inside CompositionList - ping for all compositions by that user's id. (Need to figure out how to assign many Compositions by same uid)
+- Iterate over all compositions and render.
+- Clicking on the one composition that gets rendered brings us to the composition editor.
+
+Back-End:
+- Modified Composition schema to accept a name.
+- Add the /all endpoint to the Composition route.
+
+
+TODO:
+
+Research:
+1) How is mongodb aware of Schemas?  On server runtime?  (ie:  If I make changes to model params, etc... when will it pick those changes up?)
+
+Back - End:
+1)  Need to figure out how to assign many Compositions by same uid
+2)  Determine if we need to add Schema refs to Composition and User models.
+3)  Add the /new endpoint to the Composition route
+4)  Add the /edit endpoint to the Composition route.
+
+
+Front-End:
+1)  Create a back button 
+2)  Do we need react-router?  
+3)  Add a 'NEW' button in CompositionList view.
+4)  Add ability to Save a Composition
 
 
 

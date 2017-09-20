@@ -10,8 +10,8 @@ import Navbar from './navbar/navbar.jsx';
 export default class App extends React.Component {
   constructor(props){
     super(props);
-    this.changeView = this.changeView.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.changeView    = this.changeView.bind(this);
+    this.handleSubmit  = this.handleSubmit.bind(this);
 
     this.state = {
       user: false,
@@ -55,11 +55,25 @@ export default class App extends React.Component {
   // Only supporting login right now
   login(userForm){
     console.log('LOGGING IN!', userForm)
-    fetch(`http://localhost:3001/user/login?username=${userForm.username}&password=${userForm.password}`) 
+    fetch(`http://localhost:3001/user/login?email=${userForm.email}&password=${userForm.password}`) 
     .then((resp) => resp.json())
-    .then((data) => {
-      console.log('DATA NOW', data)
-      this.changeView(null, 'clist');
+    .then((resp) => {
+      console.log('DATA NOW', resp)
+      if(!resp.status){
+        console.log('NOT A VALID USER')
+        return;
+      }
+
+      let user = resp.data;
+
+      // Set the user to state.  Then make a view transition
+      this.setState({
+        user: user
+      }, (prevState)=>{
+        console.log('STATE IS DONE');
+        this.changeView(null, 'clist');
+      })
+
     })
     .catch(function(err) {
         console.log('ERRROR', err)
@@ -79,6 +93,7 @@ export default class App extends React.Component {
   // If we refresh - checks localstorage here to determine if there is a User obj or not.  
   // If there is a User object - render Components accordingly
   componentWillMount(){
+
     console.log('APP mounting********')
     var user;
 
@@ -98,7 +113,6 @@ export default class App extends React.Component {
     return (
      <div style={{textAlign: 'center'}}>
       <Navbar handleSubmit={this.handleSubmit}></Navbar>
-        <h1>Composition</h1>
         {
           active === 'intro' ? (<Intro></Intro>) : 
           active === 'clist' ? (<CompositionList user={this.state.user} changeView={this.changeView}></CompositionList>) : 

@@ -1,5 +1,8 @@
 var express       = require("express");
 var router        = express.Router();
+var db            = require('../models/');
+
+
 
 // Grab one composition.
 // Expect a uid and composition id.
@@ -18,7 +21,23 @@ router.get('/', (req,res) => {
 router.get('/all', (req,res) => {
   console.log('req.params---->', req.params);
   console.log('req.query---->', req.query);
-  return res.send({status:true, data:'mark'}); //change this
+
+  db.Composition.find({uid:"59b61777a187ad0e1b6addc1"},  function(err, compositions){
+    if(err) return console.error('Error--->', err);
+
+    console.log('err--->', err)
+    console.log('compositions--->', compositions)
+    
+   
+
+    if(compositions.length < 1 || !compositions){
+    	console.log("ERROR!", err);
+    	return res.status(401).send({status:false, data: null, message: 'NO COMPOSITIONS FROM SERVER' });
+    }
+
+	  return res.send({status:true, data: compositions, message:'ok'});
+  })
+
 })
 
 // Need route -->  Edit Composition

@@ -15,7 +15,7 @@ export default class Navbar extends React.Component {
     }
 
     this.userForm = {
-      username:'',
+      email:'',
       password:''
     }
   }
@@ -29,8 +29,8 @@ export default class Navbar extends React.Component {
       this.userForm.password = e.target.value
     }
 
-    if(e.target.name === 'username'){
-      this.userForm.username = e.target.value
+    if(e.target.name === 'email'){
+      this.userForm.email = e.target.value
     }
 
     console.log('userForm---->', this.userForm)

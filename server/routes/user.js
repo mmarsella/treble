@@ -8,10 +8,18 @@ router.get('/login', (req,res) => {
 	console.log('req.params', req.params);
 	
   console.log('User stuff ----->', db.users);  
-  db.User.find({username:req.query.username, password:req.query.password},  function(err,Users){
-    if (err) return console.error(err);
-     console.log('response-', Users);
-	  return res.send({status:true, data: Users[0]});
+  db.User.findOne({username:req.query.username, password:req.query.password},  function(err,user){
+    if(err) return console.error('Error--->', err);
+
+    console.log('err--->', err)
+    console.log('user--->', user)
+    
+    if(!user){
+    	console.log("ERROR!", err);
+    	return res.status(401).send({status:false, data: null, message: 'Invalid email and/or password' });
+    }
+
+	  return res.send({status:true, data: user, message:'ok'});
   })
 })
 
