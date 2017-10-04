@@ -22,7 +22,7 @@ router.get('/all', (req,res) => {
   console.log('req.params---->', req.params);
   console.log('req.query---->', req.query);
 
-  db.Composition.find({uid:"59b61777a187ad0e1b6addc1"},  function(err, compositions){
+  db.Composition.find({user:req.query.user},  function(err, compositions){
     if(err) return console.error('Error--->', err);
 
     console.log('err--->', err)

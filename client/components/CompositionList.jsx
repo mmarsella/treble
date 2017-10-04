@@ -14,7 +14,7 @@ class CompositionList extends React.Component{
 
 	componentDidMount(){
 		// console.log('LOGGING IN!', userForm)
-		fetch(`http://localhost:3001/composition/all?uid=yoyoyo`) 
+		fetch(`http://localhost:3001/composition/all?user=${this.props.user._id}`) 
 		.then((resp) => resp.json())
 		.then((resp) => {
 		  console.log('DATA NOW', resp)
