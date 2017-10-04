@@ -4,10 +4,11 @@ import Tab from './Tab.jsx';
 class Composition extends React.Component{
   constructor(props){
     super(props);
+
   }
 
   componentWillMount(){
-    console.log('comp mounting')
+    console.log('comp mounting', this.props)
 
 
     // api/composition  (GET)  :id, compName
@@ -16,6 +17,28 @@ class Composition extends React.Component{
 
     // 2)  Break comp into tabs
     // 3)  Store each tab into Tab classe's props
+
+    fetch(`http://localhost:3001/composition/single?cid=${this.props.composition._id}`) 
+    .then((resp) => resp.json())
+    .then((resp) => {
+      console.log('DATA NOW', resp)
+      if(!resp.status){
+        console.log('NOT A VALID USER')
+        return;
+      }
+
+      console.log('COMPOSITIONS: ', resp);
+
+      let compositions = resp.data;
+
+      this.setState({ compositions:compositions });
+
+
+      // this.changeView(null, 'clist');
+    })
+    .catch(function(err) {
+        console.log('ERRROR', err)
+    });
 
 
 
@@ -73,6 +96,7 @@ class Composition extends React.Component{
 
     return(
       <div>
+        <div onClick={e => this.props.changeView(e, 'clist')}>Back</div>
         {tabs}
       </div>
     )

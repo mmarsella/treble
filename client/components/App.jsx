@@ -81,10 +81,13 @@ export default class App extends React.Component {
 
   }
 
-  changeView(e, view){
+  changeView(e, view, composition){
     console.log('click', e, view)
+
+    console.log('composition--->', composition)
     this.setState({
-      active: view
+      active: view,
+      composition: composition
     })
     console.log('*******', this.state.active)
   }
@@ -116,7 +119,7 @@ export default class App extends React.Component {
         {
           active === 'intro' ? (<Intro></Intro>) : 
           active === 'clist' ? (<CompositionList user={this.state.user} changeView={this.changeView}></CompositionList>) : 
-          active === 'comp'  ? (<Composition user={this.state.user} changeView={this.changeView}></Composition>): null
+          active === 'comp'  ? (<Composition user={this.state.user} composition={this.state.composition} changeView={this.changeView}></Composition>): null
         }
       </div>
     )

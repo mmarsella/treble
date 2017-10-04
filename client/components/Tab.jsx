@@ -17,10 +17,10 @@ class Tab extends Component{
       tab[i + 1] = [];
     };
 
-    console.log('tab:', tab)
-    console.log('tab:', tab)
+    // console.log('tab:', tab)
+    // console.log('tab:', tab)
 
-    console.log("TAB PROPS", this.props)
+    // console.log("TAB PROPS", this.props)
 
     // Each Tab is populated from props passed down from Composition
     this.state = {

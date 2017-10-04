@@ -23,8 +23,8 @@ export default class Navbar extends React.Component {
   handleChange(e){
     e.preventDefault();
 
-    console.log('e.target:', e.target.value);
-    console.log('e.target:', e.target.name);
+    // console.log('e.target:', e.target.value);
+    // console.log('e.target:', e.target.name);
     if(e.target.name === 'password'){
       this.userForm.password = e.target.value
     }
@@ -33,7 +33,7 @@ export default class Navbar extends React.Component {
       this.userForm.email = e.target.value
     }
 
-    console.log('userForm---->', this.userForm)
+    // console.log('userForm---->', this.userForm)
 
   }
 
