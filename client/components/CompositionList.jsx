@@ -51,8 +51,10 @@ class CompositionList extends React.Component{
 			if(this.state.compositions){
 				this.state.compositions.forEach(function(el,i){
 					console.log('this inside-->', this);
+
+					console.log('el--->', el)
 					// will need to pass data back to the click handler here to render the specific composition
-				  compositions.push( <div key={i} onClick={e => that.props.changeView(e, 'comp')}> {el.name} </div>);
+				  compositions.push( <div key={i} onClick={e => that.props.changeView(e, 'comp', el)}> {el.name} </div>);
 				})
 			}
 

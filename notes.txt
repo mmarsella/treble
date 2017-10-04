@@ -210,8 +210,9 @@ Back - End:
 Front-End:
 1)  Create a back button 
 2)  Do we need react-router?  
-3)  Add a 'NEW' button in CompositionList view.
-4)  Add ability to Save a Composition
+3)  Add a 'NEW' button in CompositionList view. [SAM]
+4)  Add ability to Save a Composition [MARK]
+5)  Populate Composition view on select of Composition from C-list. [MARK]
 
 
 
