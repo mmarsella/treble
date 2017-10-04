@@ -3,6 +3,11 @@ var router        = express.Router();
 var db            = require('../models/');
 
 
+router.post('/new', (req,res) => {
+  console.log('reg/res', req.params, req.query);
+
+})
+
 
 // Grab one composition.
 // Expect a uid and composition id.

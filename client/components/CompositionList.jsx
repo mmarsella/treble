@@ -37,6 +37,16 @@ class CompositionList extends React.Component{
 		});
 	}
 
+	createComposition(){
+		console.log('clicked create!!!!!!!!!!!!!', this.props)
+		fetch(`http://localhost:3001/composition/new?user=`, {
+			method: 'post'
+		})
+		.then((resp) => {
+			console.log('STUFFF',resp)
+		}) 
+	}
+
 
 	render(){
 			console.log('state', this.state)
@@ -58,6 +68,7 @@ class CompositionList extends React.Component{
 
 	    return(
 	      <div>
+	      	<div onClick={this.createComposition}>new</div>
 	        <div onClick={e => this.props.changeView(e, 'intro')}>Back</div>
 	        <h1> Composition List for {this.props.user.email}</h1>
 	       	{compositions}
