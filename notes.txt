@@ -218,4 +218,23 @@ Front-End:
 
 
 
+10/10/2017
+
+What we Did:
+
+- Open an existing tab from the Composition List (/single route on server-side)
+- Back & Front end support to create a tab
+
+TODO:
+
+- Add Front & Back end support to SAVE a Composition.
+- Add Front & Back end support to DELETE a Composition
+- Add Front & Back end support to ADD a TAB
+- Add Front & Back end support to DELETE a TAB
+- Add Front & Back end support to Rename a TAB???
+
+- Front End:  Close all nodes in a Tab component if another Node is selected
+
+
+
 

@@ -4,7 +4,7 @@ import Tab from './Tab.jsx';
 class Composition extends React.Component{
   constructor(props){
     super(props);
-
+    this.state = {tabs:[]}
   }
 
   componentWillMount(){
@@ -18,6 +18,37 @@ class Composition extends React.Component{
     // 2)  Break comp into tabs
     // 3)  Store each tab into Tab classe's props
 
+
+
+
+
+    // Thinking in here we would populate the props with DB data here.  
+    // If a new TAB / set all as default (like below):
+    // var tab;
+    // // debugger
+    // if(localStorage['myTab']){
+    //   // If stored in DB
+    //   tab = JSON.parse(localStorage.myTab);
+    // }else{
+    //   /***** New Tab Flow *****/
+    //   let nodes = [];
+    //   tab = this.state.tab;
+    //   console.log('tabs before', tab);
+    //   for(let s=0; s < this.stringNumber; s++){
+    //     for(let i=0; i < this.nodeCount; i++){
+    //       nodes.push({val: '', isInput: false});
+    //     }
+    //     tab[s+1] = nodes;
+    //     nodes = [];
+    //   }
+    // }
+
+
+
+  }
+
+
+  componentDidMount(){
     fetch(`http://localhost:3001/composition/single?cid=${this.props.composition._id}`) 
     .then((resp) => resp.json())
     .then((resp) => {
@@ -27,11 +58,14 @@ class Composition extends React.Component{
         return;
       }
 
-      console.log('COMPOSITIONS: ', resp);
+      // this.setState({ compositions:compositions });
+      console.log('tabs: ', resp);
 
-      let compositions = resp.data;
+      let tabs = resp.data;
 
-      this.setState({ compositions:compositions });
+      this.setState({
+        tabs: tabs  
+      })
 
 
       // this.changeView(null, 'clist');
@@ -39,59 +73,33 @@ class Composition extends React.Component{
     .catch(function(err) {
         console.log('ERRROR', err)
     });
-
-
-
-    // Thinking in here we would populate the props with DB data here.  
-    // If a new TAB / set all as default (like below):
-    var tab;
-    // debugger
-    if(localStorage['myTab']){
-      // If stored in DB
-      tab = JSON.parse(localStorage.myTab);
-    }else{
-      /***** New Tab Flow *****/
-      let nodes = [];
-      tab = this.state.tab;
-      console.log('tabs before', tab);
-      for(let s=0; s < this.stringNumber; s++){
-        for(let i=0; i < this.nodeCount; i++){
-          nodes.push({val: '', isInput: false});
-        }
-        tab[s+1] = nodes;
-        nodes = [];
-      }
-    }
-
-    this.setState({
-      tab: tab
-    })
-
   }
 
   // Makes an API call to grab composition
-  getComposition(compID){ 
+  // getComposition(compID){ 
 
-    // Needs a uid and composition id
+  //   // Needs a uid and composition id
 
-    fetch(`http://localhost:3001/composition?id=${compID}&uid=mark`) // Call the fetch function passing the url of the API as a parameter
-    .then((resp) => resp.json())
-    .then((data) => {
-      console.log('DATA NOW', data)
-    })
-    .catch(function(err) {
-        console.log('ERRROR', err)
-    });
-  }
+  //   fetch(`http://localhost:3001/composition?id=${compID}&uid=mark`) // Call the fetch function passing the url of the API as a parameter
+  //   .then((resp) => resp.json())
+  //   .then((data) => {
+  //     console.log('DATA NOW', data)
+  //   })
+  //   .catch(function(err) {
+  //       console.log('ERRROR', err)
+  //   });
+  // }
 
 
   render(){
 
     let tabs = [];
-
+    console.log('this.state in render', this.state);
     // the amt of tabs in a compisition (from the db)
-    for(let i=0; i < 4; i++){
-      tabs.push(<Tab key={i} data={this.state.tab}></Tab>)
+    for(let i=0; i < this.state.tabs.length; i++){
+
+      console.log('this.state.tabs[i].data', this.state.tabs[i].data)
+      tabs.push(<Tab key={i} data={this.state.tabs[i].data}></Tab>)
     }
 
     return(

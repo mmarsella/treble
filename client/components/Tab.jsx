@@ -11,20 +11,23 @@ class Tab extends Component{
     this.clearTab = this.clearTab.bind(this);
     // this.saveTab = this.saveTab.bind(this);
 
-    let tab = {};
+    // let tab = {};
 
-    for(let i=0; i < this.stringNumber; i++){
-      tab[i + 1] = [];
-    };
+    // for(let i=0; i < this.stringNumber; i++){
+    //   tab[i + 1] = [];
+    // };
 
     // console.log('tab:', tab)
     // console.log('tab:', tab)
 
-    // console.log("TAB PROPS", this.props)
+    console.log("TAB PROPS", this.props)
 
+    let tab = JSON.parse(this.props.data);
+
+    // debugger
     // Each Tab is populated from props passed down from Composition
     this.state = {
-      tab: this.props.data
+      tab: tab
     }
   }
 
@@ -113,8 +116,12 @@ class Tab extends Component{
   render(){
 
     let tab = [];
-    for(let i=0; i < this.stringNumber; i++){
-      tab.push(<Gstring key={i} stringNumber={i+1} updateTabState={this.updateTabState} nodes={this.state.tab[i + 1]}></Gstring>)
+    for(let idx in this.state.tab){
+
+      console.log('this.state.tab in TAB------>', this.state.tab)
+      console.log('IDX ------>', idx)
+      // debugger
+      tab.push(<Gstring key={idx} stringNumber={idx} updateTabState={this.updateTabState} nodes={this.state.tab[idx]}></Gstring>)
     }
 
 

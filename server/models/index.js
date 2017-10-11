@@ -7,5 +7,6 @@ var db            = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-module.exports.User = require("./user");
-module.exports.Composition = require("./composition");
+module.exports.User 				= require("./user");
+module.exports.Composition 	= require("./composition");
+module.exports.Tab 					= require("./tab");

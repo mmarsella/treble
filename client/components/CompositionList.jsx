@@ -3,8 +3,15 @@ import Tab from './Tab.jsx';
 
 class CompositionList extends React.Component{
 	constructor(props){
-		super(props)
-		console.log('props', this.props)
+		super(props);
+
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+
+
+		console.log('props', this.props);
+
+		this.newComposition = {};  // populates from new comp input via handleChange
 		this.state = {};
 	}
 
@@ -37,14 +44,50 @@ class CompositionList extends React.Component{
 		});
 	}
 
-	createComposition(){
-		console.log('clicked create!!!!!!!!!!!!!', this.props)
-		fetch(`http://localhost:3001/composition/new?user=`, {
-			method: 'post'
+	createComposition(newComp){
+		console.log('clicked create!!!!!!!!!!!!!', newComp)
+		fetch(`http://localhost:3001/composition/new?user=${this.props.user._id}&name=${newComp.name}`, {
+			method: 'POST'
 		})
+		.then((resp) => resp.json())
 		.then((resp) => {
-			console.log('STUFFF',resp)
-		}) 
+		  console.log('DATA NOW', resp)
+		  if(!resp.status){
+		    console.log('NOT A VALID USER')
+		    return;
+		  }
+
+		  console.log('COMPOSITIONS: ', resp);
+
+		  let newComposition = resp.data;
+
+		  this.setState({ composition : newComposition });
+
+
+		  // Need to transition after succesful composition add
+		  // this.props.changeView(null, 'comp');
+		})
+		.catch(function(err) {
+		    console.log('ERRROR', err)
+		});
+	}
+
+
+	handleSubmit(e, newComp){
+	  console.log('HANDLE SUBMIT in APP',e,newComp)
+	  e.preventDefault();
+	  this.createComposition(newComp);
+
+	}
+
+	handleChange(e){
+	  e.preventDefault();
+	  console.log('e.target:', e.target.value);
+	  console.log('e.target:', e.target.name);
+	  if(e.target.name === 'name'){
+	    this.newComposition.name = e.target.value
+	  }
+
 	}
 
 
@@ -74,6 +117,21 @@ class CompositionList extends React.Component{
 	        <div onClick={e => this.props.changeView(e, 'intro')}>Back</div>
 	        <h1> Composition List for {this.props.user.email}</h1>
 	       	{compositions}
+
+	       	<br/>
+	       	<form className="newCompForm" name='newCompForm'>
+	       	  <input
+	       	    ref={(ip)=> this.name= ip}
+	       	    className="usernameInput"
+	       	    placeholder="New Tab..."
+	       	    onChange={this.handleChange}
+	       	    name='name' 
+	       	  />
+	       	  <button onClick={e => this.handleSubmit(e, this.newComposition)}>
+	       	    Submit
+	       	  </button>
+	       	</form>
+
 	      </div>
 	    )
 	  }

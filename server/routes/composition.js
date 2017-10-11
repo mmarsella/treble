@@ -3,21 +3,26 @@ var router        = express.Router();
 var db            = require('../models/');
 
 
-router.post('/new', (req,res) => {
-  console.log('reg/res', req.params, req.query);
-
-})
 
 
-// Grab one composition.
-// Expect a uid and composition id.
-// Should return ONE composition
-// TODO: needs to be written
+
+
+// Query for all Tabs via the Composition id (pinged from the Composition component - on selection from CompositionList)
 router.get('/single', (req,res) => {
   console.log('req.params---->', req.params);
   console.log('req.query---->', req.query);
-  return res.send({status:true, data:'mark'});  //change this
+
+
+  db.Tab.find({cid:req.query.cid}, function(err, composition){
+    console.log('composition tabs-------->', composition);
+    return res.send({status:true, data: composition, message:'ok'});
+  })
+
 })
+
+
+
+
 
 //Grab all compositions
 // Expect uid
@@ -61,6 +66,41 @@ router.put('/single', (req,res) => {
 })
 
 // Need route -->  Add new Composition
+
+// send back if insert was succesful via status
+
+
+// Creates a composition
+// Then creates 4 Tabs with the new Composition's id
+// TODO:  Needs some cleaning up
+router.post('/new', (req,res) => {
+  console.log('req.params---->', req.params);
+  console.log('req.query---->', req.query);
+
+  db.Composition.create({user:req.query.user, name:req.query.name}, function(err, comp){
+    if(err) return console.error('Error inserting new Composition --->', err);
+
+    console.log('comp after insert-->', comp);
+    
+
+    db.Tab.insertMany([{cid:comp.id}, {cid:comp.id}, {cid:comp.id}, {cid:comp.id}], function(err, tabs){
+
+      if(err) return console.error('Error inserting many Tabs --->', err);
+      console.log('succesfully enter MANY TABS --->', tabs);
+
+      comp.save(function(err){
+        if(err){
+          console.log("ERROR SAVING COMP",err);
+          res.status(500).send(err);
+        }
+      })
+
+      return res.send({status:true, data: tabs, message:'ok'});
+    })
+
+
+  })
+})
 
 // Need route -->  Delete Composition
 

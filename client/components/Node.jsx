@@ -7,7 +7,7 @@ class Node extends React.Component{
 	};
 
 	componentDidUpdate(){
-		console.log('focusing')
+		// console.log('focusing')
 		if(this.props.isInput){
 			this.myInput.focus();
 		}
