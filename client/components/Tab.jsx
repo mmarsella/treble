@@ -76,7 +76,11 @@ class Tab extends Component{
 
     this.setState({
       tab: tab
+    }, () => {
+      // update next level component here
     })
+
+
   }
 
   // saveTab(){
@@ -89,7 +93,7 @@ class Tab extends Component{
   // }
 
   clearTab(){
-    console.log('TAB SUBMITTING');
+    // console.log('TAB SUBMITTING');
 
     let tab = this.state.tab;
     let newTab = {};
@@ -118,8 +122,8 @@ class Tab extends Component{
     let tab = [];
     for(let idx in this.state.tab){
 
-      console.log('this.state.tab in TAB------>', this.state.tab)
-      console.log('IDX ------>', idx)
+      // console.log('this.state.tab in TAB------>', this.state.tab)
+      // console.log('IDX ------>', idx)
       // debugger
       tab.push(<Gstring key={idx} stringNumber={idx} updateTabState={this.updateTabState} nodes={this.state.tab[idx]}></Gstring>)
     }

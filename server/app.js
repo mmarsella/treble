@@ -9,6 +9,8 @@ const corser      = require('corser');
 
 // responds and ends OPTIONS requests. also CORS headers.
 app.use(corser.create({
+	methods: corser.simpleMethods.concat(["PUT"])  // TODO: workaround to allow PUT request for now... 
+
   // requestHeaders: corser.simpleRequestHeaders.concat(["X-Session"])
 }));
 

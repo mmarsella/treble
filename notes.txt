@@ -243,6 +243,17 @@ TO CONSIDER:
 
 - Using POST for delete requests.
 
+TODO:
+
+- Need to bubble up changes made to Tabs up to the Composition level.  --> This is necessary in order to SAVE/UPDATE a composition, as we need all of the Tab data for a Composition to save.
+|____ May be easier to always ping on Tab collection and update single Tab on any change vs. bubbling up all the time --> this way the User never needs to worry about saving.
+
+OR
+
+Persist all Tab data during session - and when Saving a composition, grab Tab data from all children - rather than bubbling up.
+
+- Backend: Need to finish the '/update' route
+
 
 
 

@@ -11,7 +11,7 @@ class Gstring extends React.Component{
 
 		let nodes = this.props.nodes;
 
-		console.log('this.props in GSTRING-->', this.props)
+		// console.log('this.props in GSTRING-->', this.props)
 		this.state = {
 			nodes: nodes
 		}
@@ -46,11 +46,11 @@ class Gstring extends React.Component{
 
 	handleClick(idx){
 		// console.log('this clicked', this)
-		console.log('clicked tab', idx);
+		// console.log('clicked tab', idx);
 
 		let nodes = this.state.nodes;
 
-		console.log('NODES', this.state.nodes)
+		// console.log('NODES', this.state.nodes)
 
 		// Make sure no other node inputs are open.
 		for(let i=0; i < nodes.length; i++){
@@ -72,7 +72,7 @@ class Gstring extends React.Component{
 	}
 
 	handleSubmit(e){
-		console.log('handleSUBMITSTSTSTS', e.target);
+		// console.log('handleSUBMITSTSTSTS', e.target);
 		e.preventDefault();
 
 		// console.log('this.props', this.props);
