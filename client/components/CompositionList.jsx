@@ -69,7 +69,7 @@ class CompositionList extends React.Component{
 
 
 		  // Need to transition after succesful composition add
-		  // this.props.changeView(null, 'comp');
+		  this.props.changeView(null, 'comp', this.state.composition);
 		})
 		.catch(function(err) {
 		    console.log('ERRROR', err)

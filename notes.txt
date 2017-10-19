@@ -228,7 +228,7 @@ What we Did:
 TODO:
 
 - Add Front & Back end support to SAVE a Composition.
-- Add Front & Back end support to DELETE a Composition
+- Add Front & Back end support to DELETE a Composition [DONE]
 - Add Front & Back end support to ADD a TAB
 - Add Front & Back end support to DELETE a TAB
 - Add Front & Back end support to Rename a TAB???

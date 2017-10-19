@@ -104,6 +104,8 @@ class Composition extends React.Component{
 
     return(
       <div>
+        <h1>{this.props.composition.name}</h1>
+        <br/>
         <div onClick={e => this.props.changeView(e, 'clist')}>Back</div>
         {tabs}
       </div>

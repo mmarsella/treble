@@ -73,6 +73,8 @@ router.put('/single', (req,res) => {
 // Creates a composition
 // Then creates 4 Tabs with the new Composition's id
 // TODO:  Needs some cleaning up
+
+// Should return a composition
 router.post('/new', (req,res) => {
   console.log('req.params---->', req.params);
   console.log('req.query---->', req.query);
@@ -95,7 +97,7 @@ router.post('/new', (req,res) => {
         }
       })
 
-      return res.send({status:true, data: tabs, message:'ok'});
+      return res.send({status:true, data: comp, message:'ok'});
     })
   })
 })
