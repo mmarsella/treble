@@ -237,4 +237,12 @@ TODO:
 
 
 
+10/18/2017
+
+TO CONSIDER:
+
+- Using POST for delete requests.
+
+
+
 

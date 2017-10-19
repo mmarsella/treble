@@ -1,12 +1,16 @@
 import React from 'react';
 import Tab from './Tab.jsx';
 
+
+// APP --> CompositionList
+
 class CompositionList extends React.Component{
 	constructor(props){
 		super(props);
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.removeComposition = this.removeComposition.bind(this);
 
 
 		console.log('props', this.props);
@@ -90,24 +94,61 @@ class CompositionList extends React.Component{
 
 	}
 
+	removeComposition(comp){
+		console.log('removing composition!', comp);
+		fetch(`http://localhost:3001/composition/delete?user=${this.props.user._id}&cid=${comp._id}`, {
+			method: 'POST'
+		})
+		.then((resp) => resp.json())
+		.then((resp) => {
+		  console.log('DATA NOW', resp)
+		  if(!resp.status){
+		    console.log('ERROR IN DELETING COMPOSITION: ', resp.err);
+		    return;
+		  }
+
+		  console.log('resp ', resp);
+
+
+		  let compositions = this.state.compositions;
+
+		  compositions = compositions.filter(function(el){ return el._id !== resp.data._id})
+
+		  this.setState({ compositions : compositions });
+
+
+		  // Need to transition after succesful composition add
+		  // this.props.changeView(null, 'comp');
+		})
+		.catch(function(err) {
+		    console.log('ERRROR', err)
+		});
+	}
+
 
 	render(){
 			console.log('state', this.state)
 			let compositions = [];
 
 
-			console.log('this outside-->', this);
+			// console.log('this outside-->', this);
 
 			let that = this;  //preserving 'this' to avoid confliction inside the iterator
 
 			// if this isn't wrapped in an if() --> state is an empty object.  Is there a better placer to setState on fetching comps??
 			if(this.state.compositions){
 				this.state.compositions.forEach(function(el,i){
-					console.log('this inside-->', this);
+					// console.log('this inside-->', this);
 
-					console.log('el--->', el)
+					// console.log('el--->', el)
 					// will need to pass data back to the click handler here to render the specific composition
-				  compositions.push( <div key={i} onClick={e => that.props.changeView(e, 'comp', el)}> {el.name} </div>);
+				  compositions.push( 
+				  										<div key={i}>
+					  										<div className="compItem" onClick={e => that.props.changeView(e, 'comp', el)}> 
+														  	{el.name} 
+														   </div>
+														  	<span onClick={e => that.removeComposition(el)}>X</span>
+															</div>)
 				})
 			}
 

@@ -97,9 +97,27 @@ router.post('/new', (req,res) => {
 
       return res.send({status:true, data: tabs, message:'ok'});
     })
-
-
   })
+})
+
+
+router.post('/delete', (req,res) => {
+  console.log('req.params---->', req.params);
+  console.log('req.query---->', req.query);
+  console.log('DELETE IN SERVER');
+
+  db.Composition.findByIdAndRemove({_id:req.query.cid}, function(err, comp){
+    if(err){
+      console.error('Error DELETING Composition --->', err);
+      return res.send({status:false, data: err, message:'bad'});
+    } 
+     
+
+    console.log('comp after DELETE-->', comp);
+    
+    return res.send({status:true, data: comp, message:'ok'});
+  })
+
 })
 
 // Need route -->  Delete Composition
