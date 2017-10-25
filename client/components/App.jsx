@@ -5,6 +5,7 @@ import Composition from './Composition.jsx';
 import CompositionList from './CompositionList.jsx';
 import Intro from './Intro.jsx';
 import Navbar from './navbar/navbar.jsx';
+import Main from './navbar/navbar.jsx';
 
 
 export default class App extends React.Component {
@@ -114,13 +115,9 @@ export default class App extends React.Component {
     let active = this.state.active;
     // let active = 'clist';
     return (
-     <div style={{textAlign: 'center'}}>
-      <Navbar handleSubmit={this.handleSubmit}></Navbar>
-        {
-          active === 'intro' ? (<Intro></Intro>) : 
-          active === 'clist' ? (<CompositionList user={this.state.user} changeView={this.changeView}></CompositionList>) : 
-          active === 'comp'  ? (<Composition user={this.state.user} composition={this.state.composition} changeView={this.changeView}></Composition>): null
-        }
+      <div style={{textAlign: 'center'}}>
+        <Navbar handleSubmit={this.handleSubmit}></Navbar>
+        <Main></Main>
       </div>
     )
   }
