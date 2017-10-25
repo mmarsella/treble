@@ -5,8 +5,6 @@ class Composition extends React.Component{
   constructor(props){
     super(props);
     this.state = {tabs:[]}
-    this.saveComposition = this.saveComposition.bind(this);
-    this.updateTabs      = this.updateTabs.bind(this);
   }
 
   componentWillMount(){
