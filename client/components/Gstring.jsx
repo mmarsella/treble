@@ -101,7 +101,7 @@ class Gstring extends React.Component{
 
 		//TODO --> create a submit TAB button at the App component lvl to submit all collected 
 		// TAB data
-		console.log('e.target.firstElementChild.name', e.target.firstElementChild.name)
+		// console.log('e.target.firstElementChild.name', e.target.firstElementChild.name)
 		this.props.updateTabState(nodes, e.target.firstElementChild.name.split('-')[0], e);
 
 	}

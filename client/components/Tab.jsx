@@ -22,7 +22,8 @@ class Tab extends Component{
 
     console.log("TAB PROPS", this.props)
 
-    let tab = JSON.parse(this.props.data);
+    // let tab = JSON.parse(this.props.data);
+    let tab = this.props.data;
 
     // debugger
     // Each Tab is populated from props passed down from Composition
@@ -74,10 +75,43 @@ class Tab extends Component{
 
     tab[stringNum] = gString;
 
+    console.log('tab', tab);
+
     this.setState({
       tab: tab
     }, () => {
       // update next level component here
+      fetch(`http://localhost:3001/composition/updateTab?id=${this.props.id}`,
+        {
+          method: 'put',
+          body: JSON.stringify(tab),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        }) 
+      .then((resp) => resp.json())
+      .then((resp) => {
+        console.log('DATA NOW', resp)
+        if(!resp.status){
+          console.log('NOT A VALID USER')
+          return;
+        }
+
+        console.log('updateTab resp ===>', resp);
+
+        // let {tabs, composition} = resp.data;
+
+        // this.setState({
+        //   composition: composition,
+        //   tabs: tabs  
+        // })
+        // this.changeView(null, 'clist');
+      })
+      .catch(function(err) {
+          console.log('ERRROR', err)
+      });
+
     })
 
 
@@ -99,7 +133,7 @@ class Tab extends Component{
     let newTab = {};
     let nodes = [];
 
-    console.log('tab before', this.state.tab)
+    // console.log('tab before', this.state.tab)
 
     for(let arr in tab){
       for(let i=0; i < tab[arr].length; i++){
@@ -109,7 +143,7 @@ class Tab extends Component{
       nodes = [];
     }
 
-    console.log('newTab', newTab)
+    // console.log('newTab', newTab)
 
     this.setState({
       tab: newTab

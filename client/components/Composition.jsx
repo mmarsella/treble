@@ -93,7 +93,7 @@ class Composition extends React.Component{
     for(let i=0; i < this.state.tabs.length; i++){
 
       console.log('this.state.tabs[i].data', this.state.tabs[i].data)
-      tabs.push(<Tab key={i} data={this.state.tabs[i].data} updateTabs={this.updateTabs}></Tab>)
+      tabs.push(<Tab key={i} data={this.state.tabs[i].data} id={this.state.tabs[i]._id} updateTabs={this.updateTabs}></Tab>)
     }
 
     console.log('this.state.tabs  ', this.state.tabs)

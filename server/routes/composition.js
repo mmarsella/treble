@@ -77,8 +77,32 @@ router.post('/new', (req,res) => {
 })
 
 
+// EDIT TAB
+router.put('/updateTab', (req,res) => {
+  console.log("-------- UPDATING TAB ----------")
+  console.log('req.params---->', req.params);
+  console.log('req.query---->',  req.query);
+  console.log('req.body---->', req.body);
+
+  // console.log('tab:', req.query.tabs)
+  db.Tab.findOneAndUpdate({_id:req.query.id}, {data: req.body}, function(err,tab){
+
+    console.log('err', err)
+    console.log('tab', tab)
+    if(err){
+      console.error('Error UPDATING Composition --->', err);
+      return res.send({status:false, data: err, message:'bad'});
+    } 
+    console.log('tab success ---->', tab)
+    return res.send({status:true, data: tab, message:'ok'});
+  })
+
+  // return res.send({status:true, data: 'data', message:'ok'});
+
+})
+
 // EDIT COMPOSITION
-router.put('/update', (req,res) => {
+router.put('/updateComposition', (req,res) => {
   console.log("-------- UPDATING COMPOSITION ----------")
   console.log('req.params---->', req.params);
   console.log('req.query---->',  req.query);
