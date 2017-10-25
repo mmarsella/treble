@@ -7,17 +7,13 @@ class Node extends React.Component{
 	};
 
 	componentDidUpdate(){
-		// console.log('focusing')
 		if(this.props.isInput){
 			this.myInput.focus();
 		}
 	}
 
 	render(){	
-		// console.log("this.props Node", this.props)
 			if(this.props.isInput){
-				console.log('I am the input', this.props.idx)
-				// debugger
 				return(
 					<div className='node'>
 						<form onSubmit={this.props.handleSubmit} className="nodeForm" name='nodeForm'>

@@ -1,9 +1,7 @@
 import React from 'react';
 import Tab from './Tab.jsx';
 
-
 // APP --> CompositionList
-
 class CompositionList extends React.Component{
 	constructor(props){
 		super(props);
@@ -12,15 +10,10 @@ class CompositionList extends React.Component{
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.removeComposition = this.removeComposition.bind(this);
 
-
-		console.log('props', this.props);
+		console.log('Composition List props', this.props);
 
 		this.newComposition = {};  // populates from new comp input via handleChange
 		this.state = {};
-	}
-
-	componentWillMount(){
-
 	}
 
 	componentDidMount(){
@@ -33,14 +26,9 @@ class CompositionList extends React.Component{
 		    console.log('NOT A VALID USER')
 		    return;
 		  }
-
 		  console.log('COMPOSITIONS: ', resp);
-
 		  let compositions = resp.data;
-
 		  this.setState({ compositions:compositions });
-
-
 		  // this.changeView(null, 'clist');
 		})
 		.catch(function(err) {
@@ -49,7 +37,6 @@ class CompositionList extends React.Component{
 	}
 
 	createComposition(newComp){
-		console.log('clicked create!!!!!!!!!!!!!', newComp)
 		fetch(`http://localhost:3001/composition/new?user=${this.props.user._id}&name=${newComp.name}`, {
 			method: 'POST'
 		})
@@ -60,13 +47,9 @@ class CompositionList extends React.Component{
 		    console.log('NOT A VALID USER')
 		    return;
 		  }
-
 		  console.log('COMPOSITIONS: ', resp);
-
 		  let newComposition = resp.data;
-
 		  this.setState({ composition : newComposition });
-
 
 		  // Need to transition after succesful composition add
 		  this.props.changeView(null, 'comp', this.state.composition);
@@ -78,24 +61,18 @@ class CompositionList extends React.Component{
 
 
 	handleSubmit(e, newComp){
-	  console.log('HANDLE SUBMIT in APP',e,newComp)
 	  e.preventDefault();
 	  this.createComposition(newComp);
-
 	}
 
 	handleChange(e){
 	  e.preventDefault();
-	  console.log('e.target:', e.target.value);
-	  console.log('e.target:', e.target.name);
 	  if(e.target.name === 'name'){
 	    this.newComposition.name = e.target.value
 	  }
-
 	}
 
 	removeComposition(comp){
-		console.log('removing composition!', comp);
 		fetch(`http://localhost:3001/composition/delete?user=${this.props.user._id}&cid=${comp._id}`, {
 			method: 'POST'
 		})
@@ -107,15 +84,10 @@ class CompositionList extends React.Component{
 		    return;
 		  }
 
-		  console.log('resp ', resp);
-
-
+		  console.log('remove comp resp ', resp);
 		  let compositions = this.state.compositions;
-
 		  compositions = compositions.filter(function(el){ return el._id !== resp.data._id})
-
 		  this.setState({ compositions : compositions });
-
 
 		  // Need to transition after succesful composition add
 		  // this.props.changeView(null, 'comp');
@@ -129,10 +101,6 @@ class CompositionList extends React.Component{
 	render(){
 			console.log('state', this.state)
 			let compositions = [];
-
-
-			// console.log('this outside-->', this);
-
 			let that = this;  //preserving 'this' to avoid confliction inside the iterator
 
 			// if this isn't wrapped in an if() --> state is an empty object.  Is there a better placer to setState on fetching comps??
@@ -143,12 +111,13 @@ class CompositionList extends React.Component{
 					// console.log('el--->', el)
 					// will need to pass data back to the click handler here to render the specific composition
 				  compositions.push( 
-				  										<div key={i}>
-					  										<div className="compItem" onClick={e => that.props.changeView(e, 'comp', el)}> 
-														  	{el.name} 
-														   </div>
-														  	<span onClick={e => that.removeComposition(el)}>X</span>
-															</div>)
+						<div key={i}>
+							<div className="compItem" onClick={e => that.props.changeView(e, 'comp', el)}> 
+					  	{el.name} 
+					   </div>
+					  	<span onClick={e => that.removeComposition(el)}>X</span>
+						</div>
+					)
 				})
 			}
 
@@ -158,7 +127,6 @@ class CompositionList extends React.Component{
 	        <div onClick={e => this.props.changeView(e, 'intro')}>Back</div>
 	        <h1> Composition List for {this.props.user.email}</h1>
 	       	{compositions}
-
 	       	<br/>
 	       	<form className="newCompForm" name='newCompForm'>
 	       	  <input
